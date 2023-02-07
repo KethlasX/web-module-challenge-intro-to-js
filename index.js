@@ -142,35 +142,33 @@ NOTE 2: This is a great time to check the tests to see what it expects, versus w
         So, on this one test, the weight would be 4 pounds, and the age would be 1 years old. It's expecting your function to return a decimal number of 0.2
 */
 
-function hungryDog(dogAge, dogWeight) {
+function hungryDog(dogWeight, dogAge) {
   if (dogAge >= 1) {
     if (dogWeight <= 5) {
       return dogWeight * .05;
     }
-    if (dogWeight > 5 && dogWeight <= 10) {
+    if (dogWeight <= 10) {
       return dogWeight * .04;
     }
-    if (dogWeight > 11 && dogWeight <= 15) {
+    if (dogWeight <= 15) {
       return dogWeight * .03;
     }
-    if (dogWeight > 15) {
+    else {
       return dogWeight * .02;
     }
   }
   else {
     let months = dogAge * 12;
-    if (months > 1 && months <= 4) {
+    if (months <= 4) {
       return dogWeight * .1;
     }
-    if (dogWeight > 4 && months <= 7) {
+    if (months <= 7) {
       return dogWeight * .05;
     }
-    if (dogWeight > 7 && months <= 12) {
+    else {
       return dogWeight * .04;
     }
   }
-  
-  console.log(`If your doggo is ${dogAge} old and is ${dogWeight} pounds or less, you should feed them ${dogFood}.`)
 }
 
 hungryDog(1, 15);
@@ -196,23 +194,22 @@ Use the game function below to do the following:
 RULES OF THE GAME: Scissors beats Paper | Paper beats Rock | Rock beats Scissors | Or there's a tie
 */
 
-
-function game(user) {
-  const options = ["rock", "paper", "scissors"]
-  const randomNumber = Math.round(Math.random() * 2);
-  const computer = options[randomNumber];
-  if (user === "scissors" && computer === "paper" || user === "paper" && computer === "rock" || user === "rock" && computer === "scissors") {
-    return "you win!";
-  }
+const options = ["rock", "paper", "scissors"]
+const randomNumber = Math.round(Math.random() * 2);
+const computer = options[randomNumber];
+function game(user, computer) { 
   if (user === computer) {
     return "it's a tie";
+  }
+  if (user === "scissors" && computer === "paper" || user === "paper" && computer === "rock" || user === "rock" && computer === "scissors") {
+    return "you win!";
   }
   else {
     return "you lose!";
   }
 }
 
-console.log(game("paper"));
+console.log(game("paper", computer));
 
 
 
@@ -261,13 +258,13 @@ Using the annoyingSong function below do the following:
 4. Each time the annoyingSong is run from this loop, it should console.log the string that was returned. 
 */
 
-function annoyingSong(bottles) {
-  const bottlesLess = function bottlesLess(){
-    for (bottles = 1; bottles < 100; bottles--)
-  }
-  return "(bottles) bottles of soda on the wall, (bottles) bottles of soda, take one down pass it around (bottlesLess) bottles of soda on the wall"
+function annoyingSong(number) {
+  return `${number} bottles of soda on the wall, ${number} bottles of soda, take one down pass it around ${number - 1} bottles of soda on the wall`;
 }
-console.log(annoyingSong(25));
+for (let number = 10; number > 0; number--){
+  console.log(annoyingSong(number))
+}
+
 
 /*🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 7 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀*/
 
@@ -284,20 +281,20 @@ Using the grade function below do the following:
  below should return 'you got an F'
 */
 
-function grade(grade) {
-  if (grade >= 90 && grade <= 100) {
+function grade(score) {
+  if (score >= 90) {
     return 'you got an A';
   }
-  else if (grade >= 80 && grade <= 89) {
+  if (score >= 80) {
     return 'you got a B';
   }
-  else if (grade >= 70 && grade <= 79) {
+  if (score >= 70) {
     return 'you got a C';
   }
-  else if (grade >= 60 && grade <= 69) {
+  if (score >= 60) {
     return 'you got a D';
     }
-  else if (grade <= 50) {
+  else {
     return 'you got an F';
   }
 }
